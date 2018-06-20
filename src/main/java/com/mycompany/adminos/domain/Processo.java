@@ -11,8 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
+ * 	
  *
- * @author johnnylee
+ * @author Juliana Barbosa
  */
 @Entity
 @Table(name = "processo")
