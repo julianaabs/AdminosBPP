@@ -14,8 +14,9 @@ import javax.persistence.Table;
 @Table(name = "status")
 
 /**
+ * 	Descreve o status atual do processo administrativo.
  *
- * @author johnnylee
+ * @author Juliana Barbosa
  */
 public class Status {
 
@@ -24,18 +25,40 @@ public class Status {
     @Column
     private String descricao;
 
+    /**
+     * Acessa o Id no banco.
+     * 
+     * @return id
+     */
     public int getId() {
         return id;
     }
-
+    
+    /**
+     * Seta o Id.
+     * 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * 	Acessa a descrição do status do processo administrativo.
+     * 
+     * @return descricao
+     * 
+     */
     public String getDescricao() {
         return descricao;
     }
 
+    /**
+     * 	Seta a descrição do status do processo administrativo.
+     * 
+     * @param descricao
+     * 
+     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }

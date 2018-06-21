@@ -14,28 +14,57 @@ import javax.persistence.Table;
 @Table(name = "unidade")
 
 /**
+ *	Gerencia as informações da unidade do processo administrativo.
  *
- * @author johnnylee
+ * @author Juliana Barbosa
  */
 public class Unidade {
 
+	/**
+	 *	Id da unidade no banco.
+	 */
     @Id
     private int id;
+    
+    /**
+     *	Nome da unidade do processo.
+     */
     @Column
     private String nomeUnidade;
-
+    
+    /**
+     * Acessa o Id no banco.
+     * 
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Seta o Id.
+     * 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * 	Acessa o nome da unidade.
+     * 
+     * @return nomeUnidade
+     * 
+     */
     public String getNomeUnidade() {
         return nomeUnidade;
     }
 
+    /**
+     * 	Seta o nome da unidade do processo.
+     * 
+     * @param nomeUnidade
+     */
     public void setNomeUnidade(String nomeUnidade) {
         this.nomeUnidade = nomeUnidade;
     }

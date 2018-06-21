@@ -14,8 +14,9 @@ import javax.persistence.Table;
 @Table(name = "tipo")
 
 /**
+ * 	Essa entidade é responsável pelas informações relativas ao tipo do processo administrativo.
  *
- * @author johnnylee
+ * @author Juliana Barbosa
  */
 public class Tipo {
 
@@ -24,18 +25,38 @@ public class Tipo {
     @Column
     private String descricao;
 
+    /**
+     * Acessa o Id no banco.
+     * 
+     * @return id
+     */
     public int getId() {
         return id;
     }
-
+    
+    /**
+     * Seta o Id.
+     * 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * 	Acessa a descrição do tipo de processo.
+     * 
+     * @return descricao
+     */
     public String getDescricao() {
         return descricao;
     }
 
+    /**
+     * 	Seta a descrição do tipo de processo.
+     * 
+     * @param descricao
+     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }

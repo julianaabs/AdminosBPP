@@ -13,15 +13,30 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
- * @author jubss
+ *	Bean stateless de sessão do Interessado, responsável por instanciar a entidade Interessado na
+ * aplicação.
+ * 
+ * @author Juliana Barbosa
  */
 @Stateless
 public class InteressadoJpaDAO implements IServiceRemoteDAO {
 
+	/**
+	 * 	Instância do Interessado.
+	 */
     private static UnidadeJpaDAO instance;
+    
+    /**
+     * 	Gerenciador de entidade.
+     */
     private EntityManager entityManager;
 
+    /**
+     * 	Acessa a instância e, se ela ainda não existir, é criada.
+     * 
+     * @return instance
+     * 
+     */
     public static UnidadeJpaDAO getInstance() {
         if (instance == null) {
             instance = new UnidadeJpaDAO();
@@ -30,6 +45,12 @@ public class InteressadoJpaDAO implements IServiceRemoteDAO {
         return instance;
     }
 
+    /**
+     * 	Acessa o gerenciador de entidade caso ele já exista. Se não, ele é criado.
+     * 
+     * @return entityManager
+     * 
+     */
     @Override
     public EntityManager getEntityManager() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("AdminosPU");
@@ -40,14 +61,30 @@ public class InteressadoJpaDAO implements IServiceRemoteDAO {
         return entityManager;
     }
 
+    /**
+     * 	Retorna a instância através do Id.
+     * 
+     * @param id
+     * @return entityManager
+     */
     public Interessado getById(final int id) {
         return entityManager.find(Interessado.class, id);
     }
 
+    /**
+     * 	Acessa a lista de interessados.
+     * 
+     * @return entityManager list
+     */
     public List<Interessado> findAll() {
         return entityManager.createQuery("FROM" + Interessado.class.getName()).getResultList();
     }
 
+    /**
+     * 
+     * @param interessado
+     * 
+     */
     public void persist(Interessado interessado) {
         try {
             entityManager.getTransaction().begin();
@@ -59,6 +96,11 @@ public class InteressadoJpaDAO implements IServiceRemoteDAO {
         }
     }
 
+    /**
+     * 
+     * @param interessado
+     * 
+     */
     public void merge(Interessado interessado) {
         try {
             entityManager.getTransaction().begin();
@@ -70,6 +112,12 @@ public class InteressadoJpaDAO implements IServiceRemoteDAO {
         }
     }
 
+    /**
+     * 	Remove interessado da entidade.
+     * 
+     * @param interessado
+     * 
+     */
     public void remove(Interessado interessado) {
         try {
             entityManager.getTransaction().begin();
@@ -82,6 +130,12 @@ public class InteressadoJpaDAO implements IServiceRemoteDAO {
         }
     }
 
+    /**
+     * 	Remove interessado da entidade através do id.
+     * 
+     * @param id
+     * 
+     */
     @Override
     public void removeById(final int id) {
         try {
