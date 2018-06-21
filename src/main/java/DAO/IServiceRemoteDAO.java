@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author johnnylee
+ * @author Juliana Barbosa
  */
 @Remote
 public interface IServiceRemoteDAO {
