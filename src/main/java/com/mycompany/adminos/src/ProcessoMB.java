@@ -14,20 +14,32 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 /**
+ *	Managed Bean do processo.
  *
- * @author johnnylee
+ * 	@author Juliana Barbosa
  */
 @ManagedBean(name = "processoManagedBean")
 @RequestScoped
 public class ProcessoMB {
 
+	/**
+	 *	Bean do processo.
+	 */
     @EJB
     private static ProcessoJpaDAO dao;
 
-    //Auxiliary fields for JSF
+    /**
+     * 	Campos auxiliares para o JSF.
+     */
     private List<Processo> processoList = new ArrayList<>();
+    
     public Processo processo = new Processo();
 
+    /**
+     *	Adiciona novo processo na lista.	
+     * 
+     * @return employeelist
+     */
     public String addNewProcesso() {
         dao.persist(processo);
         processoList = dao.findAll();

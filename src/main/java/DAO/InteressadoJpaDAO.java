@@ -95,6 +95,24 @@ public class InteressadoJpaDAO implements IServiceRemoteDAO {
             entityManager.getTransaction().rollback();
         }
     }
+    
+    /**
+     * Insere uma lista de interessados para persistência
+     *
+     * @param interessado
+     */
+    public void persistAll(List<Interessado> interessado) {
+        try {
+            for (Interessado interessado1 : interessado) {
+                entityManager.getTransaction().begin();
+                entityManager.persist(interessado1);
+                entityManager.getTransaction().commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+    }
 
     /**
      * 

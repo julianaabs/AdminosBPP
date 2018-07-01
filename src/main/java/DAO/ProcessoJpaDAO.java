@@ -6,6 +6,7 @@
 package DAO;
 
 import com.mycompany.adminos.domain.Processo;
+import java.util.Calendar;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -91,6 +92,24 @@ public class ProcessoJpaDAO {//implements IServiceRemoteDAO {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+    }
+    
+    /**
+     * 	Atualiza o processo administrativo e registra a data de atualização.
+     * 
+     * @param processo
+     */
+    public void update(Processo processo) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager
+                    .createQuery("update historico set data = " + Calendar.getInstance().getTimeInMillis() + ", set idprocesso = " + processo.getId()
+                            + "where id= " + processo.getId())
+                    .executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
             entityManager.getTransaction().rollback();
         }
     }
